@@ -6,6 +6,7 @@ package io.melton.foodsbycodechallenge.domain.exceptions
  * Base Class for handling errors/failures/exceptions.
  * Every feature specific failure should extend [FeatureFailure] class.
  */
+// This isn't an exception, why is it in a package called exceptions?
 sealed class Failure {
     class NetworkConnection: Failure()
     class ServerError: Failure()

@@ -8,6 +8,8 @@ import java.io.Serializable
 /**
  * Created by Alexander Melton on 6/19/2018.
  */
+// Why serializable, also, this doesn't seem to be doing much of anything.
+// Why not just extend view model for each class and have a separate interface for this?
 abstract class BaseViewModel: ViewModel(), Serializable{
     var failure: MutableLiveData<Failure> = MutableLiveData()
 

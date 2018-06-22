@@ -21,6 +21,8 @@ class FoodsbyCodeChallenge: Application(){
      */
     var applicationComponent: ApplicationComponent? = null
         private set
+
+    // delete this
     private var compositeDisposable: CompositeDisposable? = null
 
     override fun onCreate() {
@@ -39,6 +41,8 @@ class FoodsbyCodeChallenge: Application(){
         this.applicationComponent = builder.build()
         this.applicationComponent?.inject(this)
     }
+
+    // Delete this
 
     /**
      * This only exists to create a mock server for the json file.

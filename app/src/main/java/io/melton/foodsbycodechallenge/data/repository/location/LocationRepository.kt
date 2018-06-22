@@ -14,6 +14,7 @@ interface LocationRepository: Repository{
     suspend fun location(): Either<Failure, Location>
 
     class Network
+    // Formatting, line length
     @Inject constructor(private val networkHandler: NetworkHandler, private var locationService: LocationService): LocationRepository{
         override suspend fun location(): Either<Failure, Location> {
             return when(networkHandler.isConnected){

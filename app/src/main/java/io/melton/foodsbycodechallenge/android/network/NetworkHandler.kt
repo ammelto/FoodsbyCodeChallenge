@@ -13,5 +13,6 @@ import javax.inject.Inject
 @Singleton
 class NetworkHandler
 @Inject constructor(private val context: Context) {
+    // Get is unnecessary, I don't see why this can't just be returned within your top level module
     val isConnected get() = context.networkInfo?.isConnected
 }

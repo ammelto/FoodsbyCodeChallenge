@@ -13,5 +13,6 @@ import javax.inject.Inject
 class GetDropoffs
 @Inject constructor(private val dropoffsRepository: DropoffsRepository) : UseCase<List<Dropoff>, None>() {
 
+    // Same thing I said for GetLocation
     override suspend fun run(params: None) = dropoffsRepository.dropoffs()
 }

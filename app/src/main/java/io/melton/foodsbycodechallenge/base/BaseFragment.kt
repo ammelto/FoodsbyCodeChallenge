@@ -45,6 +45,7 @@ abstract class BaseFragment: Fragment(), DaggerActivityAware {
         val androidActivityModule = AndroidActivityModule(this.activity as AppCompatActivity)
         val activityComponent = applicationComponent!!.newActivityComponent(androidActivityModule)
 
+        // Why is it deprecated, this seems like a really bad warning to suppress
         @Suppress("DEPRECATION") activityComponent.inject(this)
         this.injectSelf(activityComponent)
     }

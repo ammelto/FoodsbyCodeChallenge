@@ -16,8 +16,13 @@ import io.reactivex.disposables.CompositeDisposable
  * Created by Alexander Melton on 6/18/2018.
  */
 abstract class BaseActivity : AppCompatActivity(), DaggerActivityAware {
+    // Why is this a method variable
     val foodsbyCodeChallengeApp get() = application as FoodsbyCodeChallenge
+
+    // Why is this a method variable
     val component: FoodsbyActivityComponent by lazy { foodsbyCodeChallengeApp.applicationComponent!!.newActivityComponent(AndroidActivityModule(this)) }
+
+    // Not used
     val lifecycleRegistry: LifecycleRegistry by lazy { LifecycleRegistry(this) }
 
     private var viewModel: BaseActivityViewModel? = null

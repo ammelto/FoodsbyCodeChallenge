@@ -13,5 +13,6 @@ import javax.inject.Inject
 class GetLocation
 @Inject constructor(private val locationRepository: LocationRepository) : UseCase<Location, UseCase.None>() {
 
+    // If you have no params, you shouldn't have to pass, you could give this a default param to remedy this, although run should really just not have params
     override suspend fun run(params: None) = locationRepository.location()
 }
