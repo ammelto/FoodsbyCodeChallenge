@@ -15,6 +15,7 @@ class BaseActivityViewModel : ViewModel() {
     /**
      * Converts a bundle to a JSONObject
      */
+    // This has nothing to do with view models
     fun convertBundleToJsonObject(bundle: Bundle): JSONObject {
         val json = JSONObject()
         val keys = bundle.keySet()

@@ -18,6 +18,7 @@ import io.melton.foodsbycodechallenge.di.annotation.ActivityScope
  *
  * This module is for native Android services, not application services!
  *
+ * // You might wanna delete the author lmao
  * @author Renee Vandervelde
  */
 @Module

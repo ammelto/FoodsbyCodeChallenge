@@ -33,6 +33,7 @@ class OrdersAdapter : RecyclerView.Adapter<OrdersViewHolder>(){
         holder.binding.delivery = deliveries[position]
     }
 
+    // This shouldn't be nullable, just pass empty list, and you can get rid of the null check
     fun swapData(deliveries: List<Delivery>?){
         if(deliveries == null) this.deliveries = emptyList()
         else this.deliveries = deliveries

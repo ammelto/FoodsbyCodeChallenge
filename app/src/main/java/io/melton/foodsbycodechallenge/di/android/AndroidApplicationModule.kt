@@ -25,7 +25,7 @@ import io.melton.foodsbycodechallenge.di.annotation.ProcessLifecycle
  * Dependencies from the Android Application / Context for use in injections.
  *
  * This module is for native Android services, not application services!
- *
+ * // Do you actually use all this stuff in the app? If not, get rid of all the stuff you don't use
  */
 @Module
 class AndroidApplicationModule
@@ -142,6 +142,7 @@ class AndroidApplicationModule
         return this.application.getSharedPreferences("One20Application", Context.MODE_PRIVATE)
     }
 
+    // AFAIK You don't use lifecyle anywhere else, so you don't need this annotation
     @Provides
     @Singleton
     @ProcessLifecycle

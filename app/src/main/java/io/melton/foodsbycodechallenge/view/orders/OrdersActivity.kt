@@ -54,10 +54,12 @@ class OrdersActivity: BaseActivity(){
         val binding: ActivityOrdersBinding = DataBindingUtil.setContentView(this, R.layout.activity_orders)
         recyclerView = binding.dropoffRecyclerView
 
+        // This is super clear what is happening, and I love it :+1:
         setupRecyclerView()
         checkForLocationPermission()
         buildCalendar()
 
+        // View model work is dope :+1:
         ordersViewModel.viewmodeldata.observe(this, Observer { binding.viewmodel = it })
         ordersViewModel.getDropOffs()
     }
@@ -84,6 +86,7 @@ class OrdersActivity: BaseActivity(){
 
     }
 
+    // Formatting in this method is off, I'd do some breaking up of logical components with line breaks here
     fun setupRecyclerView(){
         recyclerView.adapter = ordersViewModel.viewmodeldata.value?.adapter
         val layoutManager = LinearLayoutManager(this)
@@ -110,6 +113,7 @@ class OrdersActivity: BaseActivity(){
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        // I assume you are going to fill out these comments with code?
         when(requestCode){
             0 -> {
                 // If request is cancelled, the result arrays are empty.

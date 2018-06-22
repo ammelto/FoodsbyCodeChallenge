@@ -8,8 +8,11 @@ import dagger.Module;
 import dagger.multibindings.IntoMap;
 import io.melton.foodsbycodechallenge.view.orders.OrdersViewModel;
 
+// Why is this in java?
 @Module
 public abstract class ViewModelBindsModule {
+
+    // Multibinds :+1:
     @Binds
     @IntoMap
     @ViewModelKey(OrdersViewModel.class)

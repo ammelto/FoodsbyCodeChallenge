@@ -21,6 +21,7 @@ fun loadImage(view: ImageView, imageUrl: String) {
 
 @BindingAdapter("orderStatus")
 fun loadOrderStatus(view: TextView, delivery: Delivery){
+    // This is a decent amount of decision logic inside of here, this should be inside the delivery object
     when{
         delivery.isPastCutoff -> view.text = "Cut-Off time has passed"
         delivery.soldout -> view.text = "This place has sold out"

@@ -12,6 +12,7 @@ import timber.log.Timber
 /**
  * Created by Alexander Melton on 6/19/2018.
  */
+// I like that you are wrapping exceptions as failures in an actual object :+1: Good pattern fam
 interface Repository{
     fun <T, R> request(call: Call<T>, transform: (T) -> R, default: T): Either<Failure, R> {
         return try {

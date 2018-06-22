@@ -13,5 +13,6 @@ internal interface DropoffsApi {
         private const val DROPOFFS = "/dropoff/"
     }
 
+    // Aren't you using coroutines? You should use the adapter that is for Retrofit and coroutines
     @SerializedName("dropoffs") @GET(DROPOFFS) fun dropoffs(): Call<DropoffsEntity>
 }

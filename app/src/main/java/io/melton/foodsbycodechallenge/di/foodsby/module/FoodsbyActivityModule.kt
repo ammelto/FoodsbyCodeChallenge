@@ -12,5 +12,5 @@ import javax.inject.Singleton
  */
 @Module
 class FoodsbyActivityModule{
-
+    // Nothing happening here, zombie code?
 }
