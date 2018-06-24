@@ -17,6 +17,8 @@ import javax.inject.Singleton
 import com.google.gson.JsonParser
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
+import io.melton.foodsbycodechallenge.data.repository.dropoff.DropoffsApi
 import io.melton.foodsbycodechallenge.data.repository.location.LocationRepository
 import java.io.IOException
 import java.io.InputStreamReader
@@ -24,6 +26,8 @@ import java.io.InputStreamReader
 
 /**
  * Created by Alexander Melton on 6/18/2018.
+ *
+ * Application level network module. Any I/O dependency resides here
  */
 @Module
 class FoodsbyNetworkModule{
@@ -33,8 +37,15 @@ class FoodsbyNetworkModule{
         return Retrofit.Builder()
                 .baseUrl("http://10.0.2.2/")
                 .client(createClient(application))
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesDropoffsApi(retrofit: Retrofit): DropoffsApi{
+        return retrofit.create(DropoffsApi::class.java)
     }
 
     @Provides

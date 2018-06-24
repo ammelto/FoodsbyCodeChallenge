@@ -9,6 +9,10 @@ import javax.inject.Singleton
 
 /**
  * Created by Alexander Melton on 6/18/2018.
+ *
+ * Activity specific dependencies. These are scoped only to the activity they're injected into
+ *
+ * Nothing here for this simple app but this would be full of stuff if the app was production
  */
 @Module
 class FoodsbyActivityModule{

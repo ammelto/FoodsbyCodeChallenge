@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Foodsby Code Challenge</string>
+
+    <!-- Order Status Alerts -->
+    <string name="past_cutoff">Cut-Off time has passed</string>
+    <string name="selling_out">This place has sold out</string>
+    <string name="order_placed">An order here has already been placed</string>
+    <string name="sold_out">This place has sold out</string>
+
+    <!-- error messages -->
+    <string name="top_address_network_error">Unfortunately location services are unavailable</string>
+    <string name="bottom_address_network_error">Please check your network</string>
+    <string name="top_address_permission_error">We need your permission to get your address</string>
+    <string name="bottom_address_permission_error">Tap here to give us permission</string>
+    <string name="empty_address_error">No data available</string>
+
 </resources>

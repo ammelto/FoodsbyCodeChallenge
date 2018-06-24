@@ -5,13 +5,15 @@ package io.melton.foodsbycodechallenge.data.repository.dropoff
  */
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
-internal interface DropoffsApi {
+interface DropoffsApi {
     companion object {
         private const val DROPOFFS = "/dropoff/"
     }
 
-    @SerializedName("dropoffs") @GET(DROPOFFS) fun dropoffs(): Call<DropoffsEntity>
+    @SerializedName("dropoffs") @GET(DROPOFFS) fun dropoffs(): Deferred<DropoffsEntity>
 }

@@ -9,6 +9,9 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
+/**
+ * Viewmodel factory for creating and injecting viewmodels.
+ */
 @Singleton
 public class FoodsbyViewModelFactory implements ViewModelProvider.Factory {
     private final Map<Class<? extends ViewModel>, Provider<ViewModel>> creators;

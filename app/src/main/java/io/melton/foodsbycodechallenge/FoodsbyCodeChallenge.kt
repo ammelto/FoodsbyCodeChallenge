@@ -25,27 +25,20 @@ class FoodsbyCodeChallenge: Application(){
 
     override fun onCreate() {
         super.onCreate()
-        startServer()
 
         this.initializeInjection()
         Timber.plant(Timber.DebugTree())
         compositeDisposable = CompositeDisposable()
     }
 
+    /**
+     * Initializes the dagger setup
+     */
     fun initializeInjection(){
         val builder = DaggerApplicationComponent.builder()
         builder.application(this).applicationModule(AndroidApplicationModule(this))
 
         this.applicationComponent = builder.build()
         this.applicationComponent?.inject(this)
-    }
-
-    /**
-     * This only exists to create a mock server for the json file.
-     * This way the application can build and run as if it's a production level application with retrofit/okhttp instead of just loading the JSON with only gson
-     */
-    fun startServer(){
-
-
     }
 }

@@ -6,26 +6,32 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
+import io.melton.foodsbycodechallenge.R
 import io.melton.foodsbycodechallenge.data.model.Delivery
 import io.melton.foodsbycodechallenge.databinding.ItemOrderBinding
 
 /**
  * Created by Alexander Melton on 6/21/2018.
+ *
+ * Essentially the equivalent of a view for each line item. Adapters go here
  */
 class OrdersViewHolder constructor(val binding: ItemOrderBinding): RecyclerView.ViewHolder(binding.root)
 
+/**
+ * Load the image with picasso.
+ * View binding takes care of the nuances
+ */
 @BindingAdapter("restaurantImage")
-fun loadImage(view: ImageView, imageUrl: String) {
-    Picasso.get().load(imageUrl).into(view)
-}
+fun loadImage(view: ImageView, imageUrl: String) = Picasso.get().load(imageUrl).into(view)
 
+/**
+ * This displays the text below the line item if there's a special status associated with it.
+ * The string res is stored on the model itself
+ */
 @BindingAdapter("orderStatus")
 fun loadOrderStatus(view: TextView, delivery: Delivery){
-    when{
-        delivery.isPastCutoff -> view.text = "Cut-Off time has passed"
-        delivery.soldout -> view.text = "This place has sold out"
-        delivery.sellingOut -> view.text = "This place is selling out fast!"
-        delivery.isOrderPlaced -> view.text = "An order here has already been placed"
+    when(delivery.statusText != null){
+        true -> view.text = view.context.resources.getText(delivery.statusText!!)
         else -> view.visibility = View.GONE
     }
 }

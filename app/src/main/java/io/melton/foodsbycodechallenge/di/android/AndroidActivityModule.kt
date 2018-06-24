@@ -14,11 +14,11 @@ import dagger.Provides
 import io.melton.foodsbycodechallenge.di.annotation.ActivityScope
 
 /**
+ * Created by Alexander Melton on 6/18/2018.
+ *
  * Dependencies from the Android Activity for use in injections.
  *
  * This module is for native Android services, not application services!
- *
- * @author Renee Vandervelde
  */
 @Module
 class AndroidActivityModule

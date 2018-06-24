@@ -10,8 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 class DropoffService
-@Inject constructor(retrofit: Retrofit) : DropoffsApi {
-    private val dropoffsApi by lazy { retrofit.create(DropoffsApi::class.java) }
+@Inject constructor(val dropoffsApi: DropoffsApi) : DropoffsApi {
 
     override fun dropoffs() = dropoffsApi.dropoffs()
 }

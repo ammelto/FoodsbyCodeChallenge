@@ -1,6 +1,9 @@
 package io.melton.foodsbycodechallenge.extensions
 
 import com.google.android.gms.tasks.Task
+import kotlinx.coroutines.experimental.CompletableDeferred
+import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.experimental.async
 import kotlin.coroutines.experimental.suspendCoroutine
 
 /**
@@ -8,12 +11,16 @@ import kotlin.coroutines.experimental.suspendCoroutine
  */
 
 @JvmName("awaitVoid")
-suspend fun Task<Void>.await() = suspendCoroutine<Unit> { continuation ->
-    addOnSuccessListener { continuation.resume(Unit) }
-    addOnFailureListener { continuation.resumeWithException(it) }
+fun Task<Void>.defer(): Deferred<Unit> {
+    val deferred = CompletableDeferred<Unit>()
+    this.addOnSuccessListener { deferred.complete({}.invoke()) }
+    this.addOnFailureListener { deferred.completeExceptionally(it) }
+    return deferred
 }
 
-suspend fun <TResult> Task<TResult>.await() = suspendCoroutine<TResult> { continuation ->
-    addOnSuccessListener { continuation.resume(it) }
-    addOnFailureListener { continuation.resumeWithException(it) }
+fun <TResult> Task<TResult>.defer(): Deferred<TResult> {
+    val deferred = CompletableDeferred<TResult>()
+    this.addOnSuccessListener { deferred.complete(it) }
+    this.addOnFailureListener { deferred.completeExceptionally(it) }
+    return deferred
 }

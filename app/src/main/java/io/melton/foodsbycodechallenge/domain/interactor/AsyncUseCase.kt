@@ -15,17 +15,25 @@ import kotlinx.coroutines.experimental.launch
  * This abstraction represents an execution unit for different use cases (this means than any use
  * case in the application should implement this contract).
  *
- * By convention each [UseCase] implementation will execute its job in a background thread
+ * By convention each [AsyncUseCase] implementation will execute its job in a background thread
  * (kotlin coroutine) and will post the result in the UI thread.
  */
-abstract class UseCase<out Type, in Params> where Type : Any {
+interface AsyncUseCaseInput<out Type, in Params> {
 
-    abstract suspend fun run(params: Params): Either<Failure, Type>
+    suspend fun run(params: Params): Either<Failure, Type>
 
     fun execute(onResult: (Either<Failure, Type>) -> Unit, params: Params) {
         val job = async(CommonPool) { run(params) }
         launch(UI) { onResult.invoke(job.await()) }
     }
+}
 
-    class None
+interface AsyncUseCase<out Type> {
+
+    suspend fun run(): Either<Failure, Type>
+
+    fun execute(onResult: (Either<Failure, Type>) -> Unit) {
+        val job = async(CommonPool) { run() }
+        launch(UI) { onResult.invoke(job.await()) }
+    }
 }

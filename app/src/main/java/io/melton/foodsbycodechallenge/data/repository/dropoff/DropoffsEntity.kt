@@ -8,4 +8,4 @@ import java.io.Serializable
  */
 data class DropoffsEntity(
         val dropoffs: List<Dropoff> = emptyList()
-): Serializable
+)

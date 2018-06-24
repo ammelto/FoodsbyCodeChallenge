@@ -13,6 +13,8 @@ import javax.inject.Singleton
 
 /**
  * Created by Alexander Melton on 6/18/2018.
+ *
+ * Application level injection component. Declare those classes which are dependent on the application scope dependencies here
  */
 @Singleton
 @Component(modules = [

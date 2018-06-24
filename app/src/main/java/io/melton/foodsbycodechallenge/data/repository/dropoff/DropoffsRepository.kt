@@ -11,15 +11,14 @@ import javax.inject.Inject
  * Created by Alexander Melton on 6/19/2018.
  */
 interface DropoffsRepository: Repository {
-    fun dropoffs(): Either<Failure, List<Dropoff>>
+    suspend fun dropoffs(): Either<Failure, List<Dropoff>>
 
-    class Network
-    @Inject constructor(private val networkHandler: NetworkHandler,
+    class Network @Inject constructor(private val networkHandler: NetworkHandler,
                         private val service: DropoffService): DropoffsRepository{
-        override fun dropoffs(): Either<Failure, List<Dropoff>> {
+        override suspend fun dropoffs(): Either<Failure, List<Dropoff>> {
             return when(networkHandler.isConnected) {
                 true -> request(service.dropoffs(), { it.dropoffs }, DropoffsEntity())
-                else -> Either.Left(Failure.NetworkConnection())
+                else -> Either.Failure(Failure.NetworkConnection())
             }
         }
 

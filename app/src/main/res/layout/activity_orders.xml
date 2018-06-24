@@ -34,11 +34,16 @@
                         android:layout_margin="16dp"
                         android:gravity="center"
                         android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:tint="@color/colorAccent"
-                            android:src="@drawable/ic_place_black_40dp"/>
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/location_animation"
+                            android:layout_gravity="center"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            bind:locationLoading="@{viewmodel.address.topAddressLine}"
+                            app:lottie_autoPlay="true"
+                            app:lottie_rawRes="@raw/bouncy_mapmaker" />
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -48,13 +53,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/primary_text_dark"
-                                android:text="@={viewmodel.topAddressLine}"/>
+                                android:text="@={viewmodel.address.topAddressLine}"/>
                             <TextView
                                 android:id="@+id/addressLineBottom"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/secondary_text_dark"
-                                android:text="@={viewmodel.bottomAddressLine}"/>
+                                android:text="@={viewmodel.address.bottomAddressLine}"/>
 
                         </LinearLayout>
 
@@ -80,17 +85,27 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/dropoffRecyclerView"
+        <android.support.v4.widget.SwipeRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swiperefresh"
+            bind:dropoffsRefresh="@{viewmodel.dropoffs}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/dropoffRecyclerView"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <com.airbnb.lottie.LottieAnimationView
             android:scaleX="2.5"
             android:scaleY="2.5"
-            bind:animateOnUpdate="@{viewmodel.adapter.itemCount}"
-            android:visibility="@{viewmodel.isEmpty()}"
+            bind:animateOnUpdate="@{viewmodel.visibleDeliveries}"
+            android:visibility="@{viewmodel.emptyState()}"
             android:id="@+id/animation_view"
             android:layout_gravity="center"
             android:layout_width="wrap_content"

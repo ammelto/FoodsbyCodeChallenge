@@ -139,7 +139,7 @@ class AndroidApplicationModule
     @Provides
     @Singleton
     fun sharedPreferences(): SharedPreferences {
-        return this.application.getSharedPreferences("One20Application", Context.MODE_PRIVATE)
+        return this.application.getSharedPreferences(application.packageName, Context.MODE_PRIVATE)
     }
 
     @Provides
