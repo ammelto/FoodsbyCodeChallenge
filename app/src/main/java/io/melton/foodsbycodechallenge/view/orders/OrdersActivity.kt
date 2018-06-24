@@ -25,7 +25,6 @@ import android.util.TypedValue
 import io.melton.foodsbycodechallenge.android.view.decorators.DividerItemDecorator
 import io.melton.foodsbycodechallenge.domain.exceptions.Failure
 
-
 /**
  * Created by Alexander Melton on 6/18/2018.
  *

@@ -73,7 +73,10 @@ fun animateOnUpdate(view: LottieAnimationView, any: Any) = view.playAnimation()
 @BindingAdapter("locationLoading")
 fun locationLoading(view: LottieAnimationView, topAddressLine: String) {
     when(topAddressLine == ""){
-        true -> view.repeatMode = LottieDrawable.INFINITE
+        true -> {
+            view.repeatMode = LottieDrawable.INFINITE
+            view.playAnimation()
+        }
         false -> view.repeatMode = 0
     }
 }

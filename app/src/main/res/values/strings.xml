@@ -11,7 +11,7 @@
     <string name="top_address_network_error">Unfortunately location services are unavailable</string>
     <string name="bottom_address_network_error">Please check your network</string>
     <string name="top_address_permission_error">We need your permission to get your address</string>
-    <string name="bottom_address_permission_error">Tap here to give us permission</string>
+    <string name="bottom_address_permission_error">Go to your settings and give us permission</string>
     <string name="empty_address_error">No data available</string>
 
 </resources>
